@@ -1,13 +1,24 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/penguingovernor/gophercises/url/internal/urlshort"
 )
 
 func main() {
+
+	yamlFile := flag.String("yaml_paths", "./data/paths.yml", "the yaml file that contains the shortened URLs")
+	yamlFD, err := os.Open(*yamlFile)
+	if err != nil {
+		log.Fatalf("unable to open file %s: %v\n", *yamlFile, err)
+	}
+	defer yamlFD.Close()
+
 	mux := defaultMux()
 
 	// Build the MapHandler using the mux as the fallback
@@ -19,13 +30,7 @@ func main() {
 
 	// Build the YAMLHandler using the mapHandler as the
 	// fallback
-	yaml := `
-- path: /urlshort
-  url: https://github.com/gophercises/urlshort
-- path: /urlshort-final
-  url: https://github.com/gophercises/urlshort/tree/solution
-`
-	yamlHandler, err := urlshort.YAMLHandler([]byte(yaml), mapHandler)
+	yamlHandler, err := urlshort.YAMLHandler(yamlFD, mapHandler)
 	if err != nil {
 		panic(err)
 	}
