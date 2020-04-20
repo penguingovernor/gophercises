@@ -81,7 +81,7 @@ const storyHTML = `<!DOCTYPE html>
         <div class="card-content">
           <select id="storyOptions">
             {{range .Options}}
-            <option value="{{.Arc}}">{{.Arc}}</option>
+            <option value="{{.Arc}}">{{.Text}}</option>
             {{end}}
           </select>
           <button onclick="goToPath()" class="button is-link">Go!</button>
