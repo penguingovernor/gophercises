@@ -8,9 +8,9 @@ import (
 type Story map[string]Storyblock
 
 type Storyblock struct {
-	Title   string              `json:"title"`
-	Story   []string            `json:"story"`
-	Options []StoryBlockOptions `json:"options"`
+	Title      string              `json:"title"`
+	Paragraphs []string            `json:"story"`
+	Options    []StoryBlockOptions `json:"options"`
 }
 
 type StoryBlockOptions struct {
