@@ -77,6 +77,10 @@ const storyHTML = `<!DOCTYPE html>
     <button onclick="goToPath()">Go!</button>
 
   </div>
+
+  <footer>
+    <span>Pssst... Want to start over? <a href="/intro">click here</a></span>
+  </footer>
   <script>
     const goToPath = () => {
       const selectElement = document.getElementById('storyOptions')
