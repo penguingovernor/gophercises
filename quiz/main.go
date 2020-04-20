@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/penguingovernor/excersize/quiz/internal/quiz"
+	"github.com/penguingovernor/gophercises/quiz/internal/quiz"
 )
 
 type cliFlags struct {
