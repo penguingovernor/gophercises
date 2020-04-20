@@ -49,37 +49,52 @@ const storyHTML = `<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Choose your adventure!</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
 
-  <div id="CurrentStory">
-    <h1 id="StoryTitle">
-      {{.Title}}
-    </h1>
-    {{range .Paragraphs}}
-    <p class="StoryText">
-      {{.}}
-    </p>
-    {{end}}
-  </div>
+  <section class="section">
+    <div id="CurrentStory" class="container">
+      <h1 id="StoryTitle" class="title">
+        {{.Title}}
+      </h1>
 
-  <div id="StoryOptions">
-    <label for="storyOptions">Choose your adventure:</label>
-    <select id="storyOptions">
-      {{range .Options}}
-      <option value="{{.Arc}}">{{.Arc}}</option>
+      {{range .Paragraphs}}
+      <p class="StoryText">
+        {{.}}
+      </p>
       {{end}}
-    </select>
-    <button onclick="goToPath()">Go!</button>
+    </div>
+  </section>
 
-  </div>
+  <section class="section">
+    <div class="container">
+      <div id="StoryOptions" class="card">
+        <div class="card-title">
+          <p>Choose your adventure:</p>
+        </div>
+        <div class="card-content">
+          <select id="storyOptions">
+            {{range .Options}}
+            <option value="{{.Arc}}">{{.Arc}}</option>
+            {{end}}
+          </select>
+          <button onclick="goToPath()" class="button is-link">Go!</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <span>Pssst... Want to start over? <a href="/intro">click here</a></span>
+
+  <footer class="page-footer blue">
+    <div class="content has-text-centered">
+      <span>Pssst... Want to start over? <a href="/intro">click here</a></span>
+    </div>
   </footer>
   <script>
     const goToPath = () => {
@@ -90,4 +105,5 @@ const storyHTML = `<!DOCTYPE html>
   </script>
 </body>
 
-</html>`
+</html>
+`
